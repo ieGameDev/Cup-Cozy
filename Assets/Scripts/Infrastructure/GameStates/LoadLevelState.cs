@@ -1,3 +1,5 @@
+using CameraLogic;
+using UnityEngine;
 using Utils;
 
 namespace Infrastructure.GameStates
@@ -24,7 +26,20 @@ namespace Infrastructure.GameStates
 
         private void OnLoaded()
         {
+            InitializingGameWorld();
+            
             _gameStateMachine.Enter<GameLoopState>();
+        }
+
+        private void InitializingGameWorld()
+        {
+            GameObject player = GameObject.FindWithTag("Player");
+            InitializingCamera(player);
+        }
+
+        private void InitializingCamera(GameObject player)
+        {
+            Camera.main?.GetComponent<CameraFollow>().Follow(player);
         }
     }
 }
