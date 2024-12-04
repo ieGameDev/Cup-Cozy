@@ -12,14 +12,10 @@ namespace Characters.Player
         private IInputService _inputService;
         private Camera _camera;
 
-        private void Start()
+        public void Construct(IInputService inputService)
         {
+            _inputService = inputService;
             _camera = Camera.main;
-            
-            if (Application.isEditor)
-                _inputService = new DesktopInput();
-            else
-                _inputService = new MobileInput();
         }
         
         private void Update() =>
