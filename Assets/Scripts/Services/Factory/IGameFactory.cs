@@ -7,5 +7,6 @@ namespace Services.Factory
     {
         GameObject CreatePlayer();
         GameObject CreatePlayerHUD();
+        GameObject CreateCustomer();
     }
 }

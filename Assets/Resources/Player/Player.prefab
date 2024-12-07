@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 370819294239264278}
   - component: {fileID: 1365960105092735979}
   - component: {fileID: 6319116469103241388}
+  - component: {fileID: -3574128928818993606}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -151,3 +152,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterController: {fileID: 1365960105092735979}
   _speed: 5
+--- !u!208 &-3574128928818993606
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877931990037051293}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

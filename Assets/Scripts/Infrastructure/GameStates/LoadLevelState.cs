@@ -35,6 +35,8 @@ namespace Infrastructure.GameStates
 
         private void InitializingGameWorld()
         {
+            // var spawnPoints = InitializingCustomerSpawners();
+            // InitializingCustomers(spawnPoints);
             GameObject player = InitializingPlayer();
             InitializingCamera(player);
             InitializingHUD();

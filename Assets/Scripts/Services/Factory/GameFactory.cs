@@ -32,5 +32,12 @@ namespace Services.Factory
         {
             return _assetsProvider.Instantiate(AssetAddress.HUDPath);
         }
+
+        public GameObject CreateCustomer()
+        {
+            GameObject customer = _assetsProvider.Instantiate(AssetAddress.CustomerPath, new Vector3(0, 1.5f, 0));
+            
+            return customer;
+        }
     }
 }
