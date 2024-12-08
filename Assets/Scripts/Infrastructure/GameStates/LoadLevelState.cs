@@ -1,4 +1,5 @@
 using CameraLogic;
+using Characters.Customers;
 using Services.Factory;
 using UnityEngine;
 using Utils;
@@ -35,11 +36,11 @@ namespace Infrastructure.GameStates
 
         private void InitializingGameWorld()
         {
-            // var spawnPoints = InitializingCustomerSpawners();
-            // InitializingCustomers(spawnPoints);
             GameObject player = InitializingPlayer();
             InitializingCamera(player);
             InitializingHUD();
+            OrderTrigger[] orderTriggers = InitializingOrderTriggers();
+            InitializingCustomerSpawners(orderTriggers);
         }
 
         private GameObject InitializingPlayer()
@@ -55,6 +56,17 @@ namespace Infrastructure.GameStates
         private void InitializingCamera(GameObject player)
         {
             Camera.main?.GetComponent<CameraFollow>().Follow(player);
+        }
+
+        private OrderTrigger[] InitializingOrderTriggers() =>
+            Object.FindObjectsByType<OrderTrigger>(FindObjectsSortMode.None);
+
+        private void InitializingCustomerSpawners(OrderTrigger[] orderTriggers)
+        {
+            CustomerSpawner[] spawners = Object.FindObjectsByType<CustomerSpawner>(FindObjectsSortMode.None);
+
+            foreach (CustomerSpawner spawner in spawners)
+                spawner.Construct(_gameFactory, orderTriggers);
         }
     }
 }

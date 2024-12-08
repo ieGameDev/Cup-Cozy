@@ -7,5 +7,6 @@ namespace AssetManager
     {
         GameObject Instantiate(string path);
         GameObject Instantiate(string path, Vector3 initialPoint);
+        GameObject Instantiate(GameObject prefab, Vector3 initialPoint);
     }
 }

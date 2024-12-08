@@ -15,5 +15,10 @@ namespace AssetManager
             GameObject prefab = Resources.Load<GameObject>(path);
             return Object.Instantiate(prefab, initialPoint, Quaternion.identity);
         }
+        
+        public GameObject Instantiate(GameObject prefab, Vector3 initialPoint)
+        {
+            return Object.Instantiate(prefab, initialPoint, Quaternion.identity);
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace Services.Factory
         private readonly IInputService _input;
         private readonly IAssetsProvider _assetsProvider;
 
-        public GameObject Player { get; set; }
+        private GameObject _player;
 
         public GameFactory(IAssetsProvider assetsProvider, IInputService input)
         {
@@ -20,12 +20,12 @@ namespace Services.Factory
 
         public GameObject CreatePlayer()
         {
-            Player = _assetsProvider.Instantiate(AssetAddress.PlayerPath, new Vector3(0, 1.5f, 0));
+            _player = _assetsProvider.Instantiate(AssetAddress.PlayerPath, new Vector3(0, 1.5f, 0));
 
-            PlayerMove playerMove = Player.GetComponent<PlayerMove>();
+            PlayerMove playerMove = _player.GetComponent<PlayerMove>();
             playerMove.Construct(_input);
 
-            return Player;
+            return _player;
         }
 
         public GameObject CreatePlayerHUD()
@@ -33,11 +33,12 @@ namespace Services.Factory
             return _assetsProvider.Instantiate(AssetAddress.HUDPath);
         }
 
-        public GameObject CreateCustomer()
+        public GameObject CreateCustomer(Transform spawnPoint)
         {
-            GameObject customer = _assetsProvider.Instantiate(AssetAddress.CustomerPath, new Vector3(0, 1.5f, 0));
-            
-            return customer;
+            GameObject[] customerPrefabs = Resources.LoadAll<GameObject>(AssetAddress.CustomersPath);
+            GameObject randomCustomerPrefab = customerPrefabs[Random.Range(0, customerPrefabs.Length)];
+
+            return _assetsProvider.Instantiate(randomCustomerPrefab, spawnPoint.position);
         }
     }
 }
