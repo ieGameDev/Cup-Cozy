@@ -12,9 +12,21 @@ namespace Characters.Customers
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag("Customer")) return;
+            if (!other.CompareTag("Customer")) 
+                return;
+            
             CustomerUI customerUi = other.GetComponentInChildren<CustomerUI>();
+            Order order = other.GetComponentInChildren<Order>();
+            order.TurnOnOrderCollider();
             customerUi.ShowAttention();
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (!other.CompareTag("Customer")) 
+                return;
+            
+            OnPlaceAvailable?.Invoke(gameObject);
         }
     }
 }

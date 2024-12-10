@@ -25,7 +25,7 @@ namespace Characters.Customers
         private void OnDestroy()
         {
             foreach (OrderTrigger orderTrigger in _orderTriggers)
-                orderTrigger.OnPlaceAvailable += CreateCustomer;
+                orderTrigger.OnPlaceAvailable -= CreateCustomer;
         }
 
         private void CreateCustomer(GameObject orderPoint)

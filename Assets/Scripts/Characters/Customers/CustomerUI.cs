@@ -8,6 +8,8 @@ namespace Characters.Customers
         [SerializeField] private CustomerMove _customerMove;
         [SerializeField] private GameObject _attentionSymbol;
         [SerializeField] private Button _orderButton;
+        
+        public Button OrderButton => _orderButton;
 
         private void Start()
         {
